@@ -49,10 +49,14 @@ private slots:
 	virtual void sendMessage(QJsonObject obj);
 	virtual CloudStreamerSettings *settings();
 	virtual IProcess *process();
-		
+
+	
 private:
 	QUrl makeURL();
-	
+	void unexportPin(int pin);
+	void exportPin(int pin);
+	void directionOutPin(int pin);
+
 	QSslConfiguration *m_pConf;
     QWebSocket *m_pWebSocket;
     int m_nMessageID;

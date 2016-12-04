@@ -25,6 +25,8 @@ class CmdCamPtzHandler : public ICmdHandler {
 	public:
 		virtual QString cmd();
 		virtual void handle(QJsonObject obj, IWebSocketClient *wsc);
+	private:
+		void setPinValue(int pin, int value);
 };
 
 #endif // VXGCLOUDCAMERA_CMD_CAM_PTZ_HANDLER_H

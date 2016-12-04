@@ -32,6 +32,31 @@ CloudStreamerSettings::CloudStreamerSettings(QString sFilename, QString sFilenam
 	if(QFile::exists(m_sFilename)){
 		QSettings sett(m_sFilename, QSettings::IniFormat);
 		
+		m_nDrivers_PIN_A1 = readIntFromSettings(sett, "DRIVERS/PIN_A1", 17);
+		m_nDrivers_PIN_A2 = readIntFromSettings(sett, "DRIVERS/PIN_A2", 23);
+		m_nDrivers_PIN_B1 = readIntFromSettings(sett, "DRIVERS/PIN_B1", 22);
+		m_nDrivers_PIN_B2 = readIntFromSettings(sett, "DRIVERS/PIN_B2", 18);
+		
+		m_nDrivers_turnleft_A1 = readIntFromSettings(sett, "DRIVERS/turnleft_A1", 0);
+		m_nDrivers_turnleft_A2 = readIntFromSettings(sett, "DRIVERS/turnleft_A2", 1);
+		m_nDrivers_turnleft_B1 = readIntFromSettings(sett, "DRIVERS/turnleft_B1", 1);
+		m_nDrivers_turnleft_B2 = readIntFromSettings(sett, "DRIVERS/turnleft_B2", 0);
+
+		m_nDrivers_turnright_A1 = readIntFromSettings(sett, "DRIVERS/turnright_A1", 1);
+		m_nDrivers_turnright_A2 = readIntFromSettings(sett, "DRIVERS/turnright_A2", 0);
+		m_nDrivers_turnright_B1 = readIntFromSettings(sett, "DRIVERS/turnright_B1", 0);
+		m_nDrivers_turnright_B2 = readIntFromSettings(sett, "DRIVERS/turnright_B2", 1);
+
+		m_nDrivers_forward_A1 = readIntFromSettings(sett, "DRIVERS/forward_A1", 0);
+		m_nDrivers_forward_A2 = readIntFromSettings(sett, "DRIVERS/forward_A2", 1);
+		m_nDrivers_forward_B1 = readIntFromSettings(sett, "DRIVERS/forward_B1", 0);
+		m_nDrivers_forward_B2 = readIntFromSettings(sett, "DRIVERS/forward_B2", 1);
+
+		m_nDrivers_backward_A1 = readIntFromSettings(sett, "DRIVERS/backward_A1", 1);
+		m_nDrivers_backward_A2 = readIntFromSettings(sett, "DRIVERS/backward_A2", 0);
+		m_nDrivers_backward_B1 = readIntFromSettings(sett, "DRIVERS/backward_B1", 1);
+		m_nDrivers_backward_B2 = readIntFromSettings(sett, "DRIVERS/backward_B2", 0);
+		
 		m_nServerCm_Wss_port = readIntFromSettings(sett, "SERVER_CM/wss_port", 8883);
 		m_nServerCm_Ws_port = readIntFromSettings(sett, "SERVER_CM/ws_port", 8888);
 		m_sServerCm_host = readStringFromSettings(sett, "SERVER_CM/host", "");
@@ -256,6 +281,127 @@ void CloudStreamerSettings::saveSessionIni(){
 	sett.setValue("STREAMS/video_stream_command", m_sStreams_video_stream_command);
 	sett.setValue("STREAMS/preview_command", m_sStreams_preview_command);
 }
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_A1(){
+	return m_nDrivers_PIN_A1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_A2(){
+	return m_nDrivers_PIN_A2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_B1(){
+	return m_nDrivers_PIN_B1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_B2(){
+	return m_nDrivers_PIN_B2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnleft_A1(){
+	return m_nDrivers_turnleft_A1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnleft_A2(){
+	return m_nDrivers_turnleft_A2;
+};
+
+// ---------------------------------------------------------------------
+
+		
+int CloudStreamerSettings::drivers_turnleft_B1(){
+	return m_nDrivers_turnleft_B1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnleft_B2(){
+	return m_nDrivers_turnleft_B2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnright_A1(){
+	return m_nDrivers_turnright_A1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnright_A2(){
+	return m_nDrivers_turnright_A2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnright_B1(){
+	return m_nDrivers_turnright_B1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_turnright_B2(){
+	return m_nDrivers_turnright_B2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_forward_A1(){
+	return m_nDrivers_forward_A1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_forward_A2(){
+	return m_nDrivers_forward_A2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_forward_B1(){
+	return m_nDrivers_forward_B1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_forward_B2(){
+	return m_nDrivers_forward_B2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_backward_A1(){
+	return m_nDrivers_backward_A1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_backward_A2(){
+	return m_nDrivers_backward_A2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_backward_B1(){
+	return m_nDrivers_backward_B1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_backward_B2(){
+	return m_nDrivers_backward_B2;
+};
 
 // ---------------------------------------------------------------------
 

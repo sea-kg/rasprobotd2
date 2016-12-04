@@ -18,6 +18,7 @@
 #include <iostream>
 #include <QSslConfiguration>
 #include <QUuid>
+#include <QFile>
 #include "cmd_handlers/create_cmd_handlers.h"
 #include "process.h"
 
@@ -63,7 +64,51 @@ WebSocketClient::WebSocketClient(CloudStreamerSettings *pSettings, QObject *pare
     // connect(&m_webSocket, &QWebSocket::disconnected, this, &WebSocketClient::closed);
 
     // m_webSocket.open(QUrl(url));
-    
+    unexportPin(pSettings->drivers_PIN_A1());
+	unexportPin(pSettings->drivers_PIN_A2());
+	unexportPin(pSettings->drivers_PIN_B1());
+	unexportPin(pSettings->drivers_PIN_B2());
+
+	exportPin(pSettings->drivers_PIN_A1());
+	exportPin(pSettings->drivers_PIN_A2());
+	exportPin(pSettings->drivers_PIN_B1());
+	exportPin(pSettings->drivers_PIN_B2());
+
+	directionOutPin(pSettings->drivers_PIN_A1());
+	directionOutPin(pSettings->drivers_PIN_A2());
+	directionOutPin(pSettings->drivers_PIN_B1());
+	directionOutPin(pSettings->drivers_PIN_B2());
+
+}
+
+// ---------------------------------------------------------------------
+
+void WebSocketClient::unexportPin(int pin){
+	QFile file("/sys/class/gpio/unexport");
+	if (file.open(QIODevice::ReadWrite)){
+		QTextStream stream( &file );
+		stream << QString::number(pin) << endl;
+	}
+}
+
+// ---------------------------------------------------------------------
+
+void WebSocketClient::exportPin(int pin){
+	QFile file("/sys/class/gpio/export");
+	if (file.open(QIODevice::ReadWrite)){
+		QTextStream stream( &file );
+		stream << QString::number(pin) << endl;
+	}
+}
+
+// ---------------------------------------------------------------------
+
+void WebSocketClient::directionOutPin(int pin){
+	QFile file("/sys/class/gpio/gpio" + QString::number(pin) + "/direction");
+	if (file.open(QIODevice::ReadWrite)){
+		QTextStream stream( &file );
+		stream << "out" << endl;
+	}
 }
 
 // ---------------------------------------------------------------------

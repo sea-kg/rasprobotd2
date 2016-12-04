@@ -22,6 +22,28 @@ class CloudStreamerSettings {
 	
 	public:
 		CloudStreamerSettings(QString sFilename, QString sFilenameSession);
+
+		int drivers_PIN_A1();
+		int drivers_PIN_A2();
+		int drivers_PIN_B1();
+		int drivers_PIN_B2();
+		int drivers_turnleft_A1();
+		int drivers_turnleft_A2();
+		int drivers_turnleft_B1();
+		int drivers_turnleft_B2();
+		int drivers_turnright_A1();
+		int drivers_turnright_A2();
+		int drivers_turnright_B1();
+		int drivers_turnright_B2();
+		int drivers_forward_A1();
+		int drivers_forward_A2();
+		int drivers_forward_B1();
+		int drivers_forward_B2();
+		int drivers_backward_A1();
+		int drivers_backward_A2();
+		int drivers_backward_B1();
+		int drivers_backward_B2();
+		
 		
 		int servercm_wss_port();
 		int servercm_ws_port();
@@ -120,6 +142,9 @@ class CloudStreamerSettings {
 		int stream_counter();
 		void stream_counter(int val);
 		
+		
+		
+		
 	private:
 		void loadSessionIni();
 		void saveSessionIni();
@@ -133,6 +158,27 @@ class CloudStreamerSettings {
 		
 		QString m_sFilename;
 		QString m_sFilenameSession;
+		
+		int m_nDrivers_PIN_A1;
+		int m_nDrivers_PIN_A2;
+		int m_nDrivers_PIN_B1;
+		int m_nDrivers_PIN_B2;
+		int m_nDrivers_turnleft_A1;
+		int m_nDrivers_turnleft_A2;
+		int m_nDrivers_turnleft_B1;
+		int m_nDrivers_turnleft_B2;
+		int m_nDrivers_turnright_A1;
+		int m_nDrivers_turnright_A2;
+		int m_nDrivers_turnright_B1;
+		int m_nDrivers_turnright_B2;
+		int m_nDrivers_forward_A1;
+		int m_nDrivers_forward_A2;
+		int m_nDrivers_forward_B1;
+		int m_nDrivers_forward_B2;
+		int m_nDrivers_backward_A1;
+		int m_nDrivers_backward_A2;
+		int m_nDrivers_backward_B1;
+		int m_nDrivers_backward_B2;
 		
 		int m_nServerCm_Wss_port;
 		int m_nServerCm_Ws_port;
