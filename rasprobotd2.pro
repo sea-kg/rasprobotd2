@@ -5,7 +5,7 @@ QT += \
 
 QT -= gui
 
-TARGET  = vxgcloudcamera
+TARGET  = rasprobotd2
 CONFIG   += console
 CONFIG   -= app_bundle
 
