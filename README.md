@@ -7,7 +7,6 @@ Sources for rasprobotd2
 	$ git clone https://github.com/sea-kg/rasprobotd2.git
 	
 ## Compile
-
 	
 	$ sudo apt install g++ make qtchooser qt5-default libqt5websockets5 libqt5websockets5-dev
 	$ cd rasprobotd2
