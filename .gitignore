@@ -31,3 +31,4 @@
 Makefile
 bin/*
 tmp/*
+etc/rasprobotd2/conf.session.ini
