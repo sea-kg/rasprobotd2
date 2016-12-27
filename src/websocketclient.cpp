@@ -68,16 +68,29 @@ WebSocketClient::WebSocketClient(CloudStreamerSettings *pSettings, QObject *pare
 	unexportPin(pSettings->drivers_PIN_A2());
 	unexportPin(pSettings->drivers_PIN_B1());
 	unexportPin(pSettings->drivers_PIN_B2());
+	unexportPin(pSettings->drivers_PIN_C1());
+	unexportPin(pSettings->drivers_PIN_C2());
+	unexportPin(pSettings->drivers_PIN_D1());
+	unexportPin(pSettings->drivers_PIN_D2());
 
 	exportPin(pSettings->drivers_PIN_A1());
 	exportPin(pSettings->drivers_PIN_A2());
 	exportPin(pSettings->drivers_PIN_B1());
 	exportPin(pSettings->drivers_PIN_B2());
+	exportPin(pSettings->drivers_PIN_C1());
+	exportPin(pSettings->drivers_PIN_C2());
+	exportPin(pSettings->drivers_PIN_D1());
+	exportPin(pSettings->drivers_PIN_D2());
 
 	directionOutPin(pSettings->drivers_PIN_A1());
 	directionOutPin(pSettings->drivers_PIN_A2());
 	directionOutPin(pSettings->drivers_PIN_B1());
 	directionOutPin(pSettings->drivers_PIN_B2());
+	directionOutPin(pSettings->drivers_PIN_C1());
+	directionOutPin(pSettings->drivers_PIN_C2());
+	directionOutPin(pSettings->drivers_PIN_D1());
+	directionOutPin(pSettings->drivers_PIN_D2());
+	
 
 }
 
