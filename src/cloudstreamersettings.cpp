@@ -36,6 +36,10 @@ CloudStreamerSettings::CloudStreamerSettings(QString sFilename, QString sFilenam
 		m_nDrivers_PIN_A2 = readIntFromSettings(sett, "DRIVERS/PIN_A2", 23);
 		m_nDrivers_PIN_B1 = readIntFromSettings(sett, "DRIVERS/PIN_B1", 22);
 		m_nDrivers_PIN_B2 = readIntFromSettings(sett, "DRIVERS/PIN_B2", 18);
+		m_nDrivers_PIN_C1 = readIntFromSettings(sett, "DRIVERS/PIN_C1", 24);
+		m_nDrivers_PIN_C2 = readIntFromSettings(sett, "DRIVERS/PIN_C2", 10);
+		m_nDrivers_PIN_D1 = readIntFromSettings(sett, "DRIVERS/PIN_D1", 9);
+		m_nDrivers_PIN_D2 = readIntFromSettings(sett, "DRIVERS/PIN_D2", 25);
 		
 		m_nDrivers_turnleft_A1 = readIntFromSettings(sett, "DRIVERS/turnleft_A1", 0);
 		m_nDrivers_turnleft_A2 = readIntFromSettings(sett, "DRIVERS/turnleft_A2", 1);
@@ -304,6 +308,31 @@ int CloudStreamerSettings::drivers_PIN_B1(){
 
 int CloudStreamerSettings::drivers_PIN_B2(){
 	return m_nDrivers_PIN_B2;
+};
+
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_C1(){
+	return m_nDrivers_PIN_B1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_C2(){
+	return m_nDrivers_PIN_C2;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_D1(){
+	return m_nDrivers_PIN_D1;
+};
+
+// ---------------------------------------------------------------------
+
+int CloudStreamerSettings::drivers_PIN_D2(){
+	return m_nDrivers_PIN_D2;
 };
 
 // ---------------------------------------------------------------------

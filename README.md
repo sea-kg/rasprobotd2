@@ -19,7 +19,7 @@ Sources for rasprobotd2
 	$ sudo ln -s `pwd`/bin/rasprobotd2 /usr/bin/rasprobotd2
 	$ sudo update-rc.d -f rasprobotd2 remove
 	$ sudo update-rc.d rasprobotd2 defaults
-
+	$ sudo nano /etc/rasprobotd2/conf.ini
 
 ## Compile ffmpeg && x264
 

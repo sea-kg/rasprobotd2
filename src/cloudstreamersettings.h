@@ -27,6 +27,10 @@ class CloudStreamerSettings {
 		int drivers_PIN_A2();
 		int drivers_PIN_B1();
 		int drivers_PIN_B2();
+		int drivers_PIN_C1();
+		int drivers_PIN_C2();
+		int drivers_PIN_D1();
+		int drivers_PIN_D2();
 		int drivers_turnleft_A1();
 		int drivers_turnleft_A2();
 		int drivers_turnleft_B1();
@@ -141,9 +145,7 @@ class CloudStreamerSettings {
 		
 		int stream_counter();
 		void stream_counter(int val);
-		
-		
-		
+
 		
 	private:
 		void loadSessionIni();
@@ -163,6 +165,10 @@ class CloudStreamerSettings {
 		int m_nDrivers_PIN_A2;
 		int m_nDrivers_PIN_B1;
 		int m_nDrivers_PIN_B2;
+		int m_nDrivers_PIN_C1;
+		int m_nDrivers_PIN_C2;
+		int m_nDrivers_PIN_D1;
+		int m_nDrivers_PIN_D2;
 		int m_nDrivers_turnleft_A1;
 		int m_nDrivers_turnleft_A2;
 		int m_nDrivers_turnleft_B1;

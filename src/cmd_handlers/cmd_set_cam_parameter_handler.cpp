@@ -11,6 +11,8 @@
 //  use the contact form at https://www.videoexpertsgroup.com/contact-vxg/
 //
 
+#include <QFile>
+#include <QTextStream>
 #include "cmd_set_cam_parameter_handler.h"
 
 QString CmdSetCamParameterHandler::cmd(){
@@ -24,15 +26,30 @@ void CmdSetCamParameterHandler::handle(QJsonObject obj, IWebSocketClient *wsc){
 		nCamid = obj["cam_id"].toInt();
 	}
 
+	int mPinC1 = wsc->settings()->drivers_PIN_C1();
+
 	if(obj.contains("status_led")){
+		if(obj["status_led"].toBool()){
+			setPinValue(mPinC1, 1);
+		}else{
+			setPinValue(mPinC1, 0);
+		}
+		
 		// wsc->settings()->audioconf_spkr_mute(obj["status_led"].toBool());
 	}
 	
 	if(obj.contains("activity")){
 		// wsc->settings()->audioconf_spkr_mute(obj["status_led"].toBool());
 	}
-	
-	
 
 	wsc->sendMessage(wsc->makeCommandDone(cmd(), obj["msgid"].toInt(), "OK"));	
+}
+
+void CmdSetCamParameterHandler::setPinValue(int pin, int value){
+	QFile file("/sys/class/gpio/gpio" + QString::number(pin) + "/value");
+	if (file.open(QIODevice::ReadWrite)){
+		QTextStream stream( &file );
+		stream << QString::number(value) << endl;
+		qDebug() << "Set value " << value << " to " << pin;
+	}
 }
