@@ -314,7 +314,7 @@ int CloudStreamerSettings::drivers_PIN_B2(){
 // ---------------------------------------------------------------------
 
 int CloudStreamerSettings::drivers_PIN_C1(){
-	return m_nDrivers_PIN_B1;
+	return m_nDrivers_PIN_C1;
 };
 
 // ---------------------------------------------------------------------
