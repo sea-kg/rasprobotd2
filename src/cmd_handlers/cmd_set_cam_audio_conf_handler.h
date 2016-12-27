@@ -25,6 +25,9 @@ class CmdSetCamAudioConfHandler : public ICmdHandler {
 	public:
 		virtual QString cmd();
 		virtual void handle(QJsonObject obj, IWebSocketClient *wsc);
+	private:
+		void setPinValue(int pin, int value);
+		void pwmPin(int pin, qint64 width_signal_usec);
 };
 
 #endif // VXGCLOUDCAMERA_CMD_SET_CAM_AUDIO_CONF_HANDLER_H
