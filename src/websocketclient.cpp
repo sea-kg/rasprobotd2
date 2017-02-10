@@ -97,11 +97,13 @@ WebSocketClient::WebSocketClient(CloudStreamerSettings *pSettings, QObject *pare
 // ---------------------------------------------------------------------
 
 void WebSocketClient::executeCommandWithWait(QString cmd, QStringList params){
-	qDebug().nospace().noquote() << "Execute command " << cmd << " " << params.join(" ");
+	qDebug().nospace() << "Execute command " << cmd << " " << params.join(" ");
 	QProcess process;
 	process.execute(cmd, params);
 	process.waitForFinished();
 	QString output(process.readAllStandardOutput());
+	qDebug().nospace() << "Output " << output;
+	qDebug().nospace() << "Exit Status " << process.exitStatus();
 	process.close();
 }
 
