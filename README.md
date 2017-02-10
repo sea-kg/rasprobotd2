@@ -57,5 +57,10 @@ If try short in one command:
 
 	$ sudo raspi-config
 	
-	
+
+## Add video driver loading on device start . Please note that reboot is required after following command:
+
+	$ sudo su -c 'echo 'bcm2835_v4l2' >> /etc/modules'
+	$ sudo echo gpu_mem=128 >> /boot/config.txt
+	$ sudo reboot;
 

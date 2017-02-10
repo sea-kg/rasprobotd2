@@ -16,6 +16,8 @@
 #include "cloudstreamersettings.h"
 #include "accpclient/accpclient.h"
 #include <iostream>
+#include <QProcess>
+            
 
 int main(int argc, char *argv[])
 {
@@ -36,9 +38,9 @@ int main(int argc, char *argv[])
 		}
 		pSettings->accp_reg_token(sRegToken);
 	}
-	
+
 	WebSocketClient client(pSettings);
-	
+
 	// QObject::connect(&client, &WebSocketClient::closed, &a, &QCoreApplication::quit);
 
 	return a.exec();

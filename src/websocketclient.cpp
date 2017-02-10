@@ -91,7 +91,26 @@ WebSocketClient::WebSocketClient(CloudStreamerSettings *pSettings, QObject *pare
 	directionOutPin(pSettings->drivers_PIN_D1());
 	directionOutPin(pSettings->drivers_PIN_D2());
 	
+	initialize_camera();
+}
 
+// ---------------------------------------------------------------------
+
+void WebSocketClient::executeCommandWithWait(QString cmd, QStringList params){
+	qDebug().nospace().noquote() << "Execute command " << cmd << " " << params.join(" ");
+	QProcess process;
+	process.execute(cmd, params);
+	process.waitForFinished();
+	QString output(process.readAllStandardOutput());
+	process.close();
+}
+
+// ---------------------------------------------------------------------
+
+void WebSocketClient::initialize_camera(){
+	executeCommandWithWait("v4l2-ctl", QStringList() << "--set-ctrl" << "h264_i_frame_period=10");
+	executeCommandWithWait("v4l2-ctl", QStringList() << "--set-ctrl" << "video_bitrate=500000");
+	executeCommandWithWait("v4l2-ctl", QStringList() << "--set-ctrl" << "repeat_sequence_header=1");
 }
 
 // ---------------------------------------------------------------------

@@ -56,7 +56,9 @@ private:
 	void unexportPin(int pin);
 	void exportPin(int pin);
 	void directionOutPin(int pin);
-
+	void executeCommandWithWait(QString cmd, QStringList params);
+	void initialize_camera();
+		
 	QSslConfiguration *m_pConf;
     QWebSocket *m_pWebSocket;
     int m_nMessageID;
