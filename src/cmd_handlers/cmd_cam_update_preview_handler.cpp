@@ -31,8 +31,8 @@ void CmdCamUpdatePreviewHandler::handle(QJsonObject obj, IWebSocketClient *wsc){
 	if(QFile::exists("preview.jpg"))
 		QFile::remove("preview.jpg");
 
-	QString preview_command = wsc->settings()->streams_preview_command();
-	preview_command.replace(QString("%PREVIEWJPG%"), QString("preview.jpg"));
+	QString preview_command = "raspistill -vf -hf -w 160 -h 120 -o preview.jpg";
+	// TODO flips
 	qDebug() << "[WS] create preview: " << preview_command;
 	
 	QProcess process;

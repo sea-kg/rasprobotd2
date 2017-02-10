@@ -122,15 +122,7 @@ class CloudStreamerSettings {
 		void audioconf_mic_mute(bool val);
 		QString audioconf_echo_cancel();
 		void audioconf_echo_cancel(QString val);
-
-		QStringList videoconf_caps_vert_flip();
-		void videoconf_caps_vert_flip(QStringList val);
-		QStringList videoconf_caps_horz_flip();
-		void videoconf_caps_horz_flip(QStringList val);
-		QStringList videoconf_caps_tdn();
-		void videoconf_caps_tdn(QStringList val);
-		QStringList videoconf_caps_ir_light();
-		void videoconf_caps_ir_light(QStringList val);
+		
 		QString videoconf_vert_flip();
 		void videoconf_vert_flip(QString val);
 		QString videoconf_horz_flip();
@@ -139,9 +131,6 @@ class CloudStreamerSettings {
 		void videoconf_tdn(QString val);
 		QString videoconf_ir_light();
 		void videoconf_ir_light(QString val);
-
-		QString streams_video_stream_command();
-		QString streams_preview_command();
 		
 		int stream_counter();
 		void stream_counter(int val);
@@ -231,17 +220,11 @@ class CloudStreamerSettings {
 		bool m_bAudioConf_mic_mute;
 		QString m_sAudioConf_echo_cancel;
 
-		QStringList m_slistVideoConf_caps_vert_flip;
-		QStringList m_slistVideoConf_caps_horz_flip;
-		QStringList m_slistVideoConf_caps_tdn;
-		QStringList m_slistVideoConf_caps_ir_light;
 		QString m_sVideoConf_vert_flip;
 		QString m_sVideoConf_horz_flip;
 		QString m_sVideoConf_tdn;
 		QString m_sVideoConf_ir_light;
-		
-		QString m_sStreams_video_stream_command;
-		QString m_sStreams_preview_command;
+
 		
 		int m_nStream_counter;
 };

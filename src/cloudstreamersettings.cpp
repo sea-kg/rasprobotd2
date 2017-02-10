@@ -88,8 +88,6 @@ CloudStreamerSettings::CloudStreamerSettings(QString sFilename, QString sFilenam
 		loadAudioConf(sett);
 		loadVideoConf(sett);
 
-		m_sStreams_video_stream_command = readStringFromSettings(sett, "STREAMS/video_stream_command", "");
-		m_sStreams_preview_command = readStringFromSettings(sett, "STREAMS/preview_command", "");
 	}else{
 		qDebug() << "[WARNING] File " << m_sFilename << " not found";
 	}
@@ -176,9 +174,6 @@ void CloudStreamerSettings::loadSessionIni(){
 		m_sCamera_version = readStringFromSettings(sett_session, "CAMERA/version", "");
 		m_sCamera_initial_mode = readStringFromSettings(sett_session, "CAMERA/initial_mode", "cloud");
 		m_nCamera_id = readIntFromSettings(sett_session, "CAMERA/id", 0);
-
-		m_sStreams_video_stream_command = readStringFromSettings(sett_session, "STREAMS/video_stream_command", "");
-		m_sStreams_preview_command = readStringFromSettings(sett_session, "STREAMS/preview_command", "");
 		
 		loadAudioConf(sett_session);
 		loadVideoConf(sett_session);
@@ -208,12 +203,7 @@ void CloudStreamerSettings::loadAudioConf(QSettings &sett){
 // ---------------------------------------------------------------------
 
 void CloudStreamerSettings::loadVideoConf(QSettings &sett){
-	// caps
-	m_slistVideoConf_caps_vert_flip = readStringListFromSettings(sett, "VIDEOCONF/caps_vert_flip", QStringList());
-	m_slistVideoConf_caps_horz_flip = readStringListFromSettings(sett, "VIDEOCONF/caps_horz_flip", QStringList());
-	m_slistVideoConf_caps_tdn = readStringListFromSettings(sett, "VIDEOCONF/caps_tdn", QStringList());
-	m_slistVideoConf_caps_ir_light = readStringListFromSettings(sett, "VIDEOCONF/caps_ir_light", QStringList());
-	
+
 	// values
 	m_sVideoConf_vert_flip = readStringFromSettings(sett, "VIDEOCONF/vert_flip", "auto");
 	m_sVideoConf_horz_flip = readStringFromSettings(sett, "VIDEOCONF/horz_flip", "auto");
@@ -271,19 +261,11 @@ void CloudStreamerSettings::saveSessionIni(){
 	sett.setValue("AUDIOCONF/mic_mute", m_bAudioConf_mic_mute);
 	sett.setValue("AUDIOCONF/mic_gain", m_nAudioConf_mic_gain);
 	sett.setValue("AUDIOCONF/echo_cancel", m_sAudioConf_echo_cancel);
-	
-	
-	sett.setValue("VIDEOCONF/caps_vert_flip", m_slistVideoConf_caps_vert_flip);
-	sett.setValue("VIDEOCONF/caps_horz_flip", m_slistVideoConf_caps_horz_flip);
-	sett.setValue("VIDEOCONF/caps_tdn", m_slistVideoConf_caps_tdn);
-	sett.setValue("VIDEOCONF/caps_ir_light", m_slistVideoConf_caps_ir_light);
+
 	sett.setValue("VIDEOCONF/vert_flip", m_sVideoConf_vert_flip);
 	sett.setValue("VIDEOCONF/horz_flip", m_sVideoConf_horz_flip);
 	sett.setValue("VIDEOCONF/tdn", m_sVideoConf_tdn);
 	sett.setValue("VIDEOCONF/ir_light", m_sVideoConf_ir_light);
-
-	sett.setValue("STREAMS/video_stream_command", m_sStreams_video_stream_command);
-	sett.setValue("STREAMS/preview_command", m_sStreams_preview_command);
 }
 
 // ---------------------------------------------------------------------
@@ -816,58 +798,6 @@ void CloudStreamerSettings::audioconf_echo_cancel(QString val){
 
 // ---------------------------------------------------------------------
 
-QStringList CloudStreamerSettings::videoconf_caps_vert_flip(){
-	return m_slistVideoConf_caps_vert_flip;
-};
-
-// ---------------------------------------------------------------------
-
-void CloudStreamerSettings::videoconf_caps_vert_flip(QStringList val){
-	m_slistVideoConf_caps_vert_flip = val;
-	saveSessionIni();
-};
-
-// ---------------------------------------------------------------------
-
-QStringList CloudStreamerSettings::videoconf_caps_horz_flip(){
-	return m_slistVideoConf_caps_horz_flip;
-};
-
-// ---------------------------------------------------------------------
-
-void CloudStreamerSettings::videoconf_caps_horz_flip(QStringList val){
-	m_slistVideoConf_caps_horz_flip = val;
-	saveSessionIni();
-};
-
-// ---------------------------------------------------------------------
-
-QStringList CloudStreamerSettings::videoconf_caps_tdn(){
-	return m_slistVideoConf_caps_tdn;
-};
-
-// ---------------------------------------------------------------------
-
-void CloudStreamerSettings::videoconf_caps_tdn(QStringList val){
-	m_slistVideoConf_caps_tdn = val;
-	saveSessionIni();
-};
-
-// ---------------------------------------------------------------------
-
-QStringList CloudStreamerSettings::videoconf_caps_ir_light(){
-	return m_slistVideoConf_caps_ir_light;
-};
-
-// ---------------------------------------------------------------------
-
-void CloudStreamerSettings::videoconf_caps_ir_light(QStringList val){
-	m_slistVideoConf_caps_ir_light = val;
-	saveSessionIni();
-};
-
-// ---------------------------------------------------------------------
-
 QString CloudStreamerSettings::videoconf_vert_flip(){
 	return m_sVideoConf_vert_flip;
 };
@@ -955,18 +885,6 @@ QString CloudStreamerSettings::servercm_media_server(){
 void CloudStreamerSettings::servercm_media_server(QString val){
 	m_sServerCm_media_server = val;
 	saveSessionIni();
-};
-
-// ---------------------------------------------------------------------
-
-QString CloudStreamerSettings::streams_video_stream_command(){
-	return m_sStreams_video_stream_command;
-};
-
-// ---------------------------------------------------------------------
-
-QString CloudStreamerSettings::streams_preview_command(){
-	return m_sStreams_preview_command;
 };
 
 // ---------------------------------------------------------------------

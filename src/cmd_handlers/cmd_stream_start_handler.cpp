@@ -28,12 +28,16 @@ QString CmdStreamStartHandler::cmd(){
 
 void CmdStreamStartHandler::handle(QJsonObject obj, IWebSocketClient *wsc){
 
-	// ; rtmp://54.173.34.172:1935/live/u1976m5453c5424_primary?sid=oCJ4s05MhUbG
 	QString stream_url = "rtmp://" + wsc->settings()->servercm_media_server() + "/" + wsc->settings()->camera_media_url() + "Main";
 	stream_url += "?sid=" + wsc->settings()->servercm_sid();
-	
-	QString video_stream_command = wsc->settings()->streams_video_stream_command();
-	video_stream_command.replace(QString("%RTMPURL%"), stream_url);
+
+	QString video_stream_command = "raspivid -t 0 -w 960 -h 540 -fps 25 -b 500000 -vf -hf -o - | ffmpeg -i - -vcodec copy -an -f flv " + stream_url;
+
+	// TODO resolution
+	// TODO bitrate
+	// TODO flips
+	// TODO fps
+
 	if(!wsc->process()->isStarted()){
 		wsc->settings()->stream_counter(1); // set count
 		qDebug() << "[WS] video_stream_command: " << video_stream_command;

@@ -30,49 +30,39 @@ void CmdGetCamVideoConfHandler::handle(QJsonObject obj, IWebSocketClient *wsc){
 
 	{
 		QJsonArray vert_flip;
-		QStringList caps_vert_flip = wsc->settings()->videoconf_caps_vert_flip();
-		for(int i = 0; i < caps_vert_flip.size(); i++){
-			QString s = caps_vert_flip.at(i).trimmed();
-			if(s != ""){
-				vert_flip.append(s);
-			}
-		}
+		vert_flip.append("on");
+		vert_flip.append("off");
 		caps["vert_flip"] = vert_flip;
 	}
 
 	{
 		QJsonArray horz_flip;
-		QStringList caps_horz_flip = wsc->settings()->videoconf_caps_horz_flip();
-		for(int i = 0; i < caps_horz_flip.size(); i++){
-			QString s = caps_horz_flip.at(i).trimmed();
-			if(s != ""){
-				horz_flip.append(s);
-			}
-		}
+		horz_flip.append("on");
+		horz_flip.append("off");
 		caps["horz_flip"] = horz_flip;
 	}
 	
 	{
 		QJsonArray tdn;
-		QStringList caps_tdn = wsc->settings()->videoconf_caps_tdn();
+		/*QStringList caps_tdn = wsc->settings()->videoconf_caps_tdn();
 		for(int i = 0; i < caps_tdn.size(); i++){
 			QString s = caps_tdn.at(i).trimmed();
 			if(s != ""){
 				tdn.append(s);
 			}
-		}
+		}*/
 		caps["tdn"] = tdn;
 	}
 
 	{
 		QJsonArray ir_light;
-		QStringList caps_ir_light = wsc->settings()->videoconf_caps_ir_light();
+		/*QStringList caps_ir_light = wsc->settings()->videoconf_caps_ir_light();
 		for(int i = 0; i < caps_ir_light.size(); i++){
 			QString s = caps_ir_light.at(i).trimmed();
 			if(s != ""){
 				ir_light.append(s);
 			}
-		}
+		}*/
 		caps["ir_light"] = ir_light;
 	}
 	
